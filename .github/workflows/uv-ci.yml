@@ -8,7 +8,7 @@ on:
         type: string
       python-versions:
         required: true
-        type: array
+        type: string
 jobs:
   tests:
     name: python ${{ matrix.python-version }} tests, ${{ matrix.uv-resolution }} dependencies
