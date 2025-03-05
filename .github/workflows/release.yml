@@ -1,0 +1,25 @@
+name: "Release"
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      - uses: actions/checkout@v4
+
+      - name: Install carthorse
+        run: pip install carthorse
+        shell: bash
+
+      - name: Run carthorse
+        run: carthorse --config .carthorse.yaml
+        shell: bash

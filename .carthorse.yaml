@@ -1,0 +1,11 @@
+carthorse:
+  version-from:
+    name: file
+    path: CHANGELOG.md
+    pattern: '## (?P<version>[\d.]+)'
+  when:
+    - version-not-tagged
+  actions:
+    - create-tag
+    - update-major-tag
+
