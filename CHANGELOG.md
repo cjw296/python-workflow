@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 (2 Apr 2025)
+
+- Use `cjw296/python-action/check-coverage`.
+
 ## 1.0.1 (27 Mar 2025)
 
 - Use `--resolution lowest-direct` instead of  `--resolution lowest`.
