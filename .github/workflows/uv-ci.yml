@@ -35,7 +35,7 @@ jobs:
       - name: Run tests
         run: |
           export COVERAGE_FILE=.coverage.$GITHUB_JOB
-          uv run pytest --cov
+          uv run -m pytest --cov
 
       - name: Upload coverage data
         uses: actions/upload-artifact@v4
