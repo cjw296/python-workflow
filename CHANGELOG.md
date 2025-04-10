@@ -1,6 +1,10 @@
 # Changelog
 
-## 2.0.0 (10 Apri 2025)
+## 2.0.1 (10 April 2025)
+
+- Check the package on all the specified Python versions
+
+## 2.0.0 (10 April 2025)
 
 - Switch to `ruff` for formatting, using `cjw296/python-action/check-formatting`.
 
