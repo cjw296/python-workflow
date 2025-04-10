@@ -91,7 +91,11 @@ jobs:
     needs:
       - build-and-inspect-package
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ${{ fromJson(inputs.python-versions) }}
     steps:
       - uses: cjw296/python-action/check-distributions@v1
         with:
           package: ${{ inputs.package }}
+          python-version: ${{ matrix.python-version }}
