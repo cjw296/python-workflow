@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0 (10 Apri 2025)
+
+- Switch to `ruff` for formatting, using `cjw296/python-action/check-formatting`.
+
+Make sure any `black` config in `pyproject.toml` is updated to `ruff` config.
+
 ## 1.1.0 (2 Apr 2025)
 
 - Use `cjw296/python-action/check-coverage`.
