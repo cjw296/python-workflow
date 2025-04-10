@@ -74,16 +74,7 @@ jobs:
   formatting:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: astral-sh/setup-uv@v5
-        with:
-          cache-dependency-glob: "**/pyproject.toml"
-
-      - name: Check formatting is correct
-        run:  |
-          uv tool install black
-          black --check .
+      - uses: cjw296/python-action/check-formatting@v1
 
   build-and-inspect-package:
     needs:
