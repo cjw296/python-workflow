@@ -20,30 +20,10 @@ jobs:
           - "lowest-direct"
           - "highest"
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install uv and set the python version
-        uses: astral-sh/setup-uv@v5
+      - uses: cjw296/python-action/run-tests@main
         with:
           python-version: ${{ matrix.python-version }}
-          cache-dependency-glob: "**/pyproject.toml"
-          cache-suffix: ${{ matrix.uv-resolution }}
-
-      - name: Install the project
-        run: uv sync --all-extras --dev --resolution ${{ matrix.uv-resolution }}
-
-      - name: Run tests
-        run: |
-          export COVERAGE_FILE=.coverage.$GITHUB_JOB
-          uv run -m pytest --cov
-
-      - name: Upload coverage data
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-data-${{ matrix.python-version }}-${{ matrix.uv-resolution }}
-          path: .coverage.*
-          include-hidden-files: true
-          if-no-files-found: ignore
+          uv-resolution: ${{ matrix.uv-resolution }}
 
   coverage:
     needs: tests
@@ -58,18 +38,9 @@ jobs:
       matrix:
         python-version: ${{ fromJson(inputs.python-versions) }}
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: astral-sh/setup-uv@v5
+      - uses: cjw296/python-action/check-typing@main
         with:
           python-version: ${{ matrix.python-version }}
-          cache-dependency-glob: "**/pyproject.toml"
-
-      - name: Install the project
-        run: uv sync --all-extras --dev
-
-      - name: Run tests
-        run: uv run mypy src tests
 
   formatting:
     runs-on: ubuntu-latest
