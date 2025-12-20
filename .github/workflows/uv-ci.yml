@@ -23,7 +23,7 @@ jobs:
       - uses: cjw296/python-action/run-tests@main
         with:
           python-version: ${{ matrix.python-version }}
-          uv-resolution: ${{ matrix.uv-resolution }}
+          uv-params: "--all-extras --dev --resolution ${{ matrix.uv-resolution }}"
 
   coverage:
     needs: tests
