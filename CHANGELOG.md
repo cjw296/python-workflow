@@ -1,10 +1,14 @@
 # Changelog
 
-## 2.0.1 (10 April 2025)
+## 2.1.0 (21 Dec 2025)
+
+- Use the factored out `run-test` and `check-typing` actions.
+
+## 2.0.1 (10 Apr 2025)
 
 - Check the package on all the specified Python versions
 
-## 2.0.0 (10 April 2025)
+## 2.0.0 (10 Apr 2025)
 
 - Switch to `ruff` for formatting, using `cjw296/python-action/check-formatting`.
 

@@ -20,7 +20,7 @@ jobs:
           - "lowest-direct"
           - "highest"
     steps:
-      - uses: cjw296/python-action/run-tests@main
+      - uses: cjw296/python-action/run-tests@v2
         with:
           python-version: ${{ matrix.python-version }}
           uv-params: "--all-extras --dev --resolution ${{ matrix.uv-resolution }}"
@@ -38,7 +38,7 @@ jobs:
       matrix:
         python-version: ${{ fromJson(inputs.python-versions) }}
     steps:
-      - uses: cjw296/python-action/check-typing@main
+      - uses: cjw296/python-action/check-typing@v2
         with:
           python-version: ${{ matrix.python-version }}
 
