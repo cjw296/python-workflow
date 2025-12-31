@@ -13,3 +13,4 @@ jobs:
     with:
       package: test_package
       python-versions: '["3.9", "3.12"]'
+      project-directory: tests/sample-python-project

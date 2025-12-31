@@ -9,6 +9,10 @@ on:
       python-versions:
         required: true
         type: string
+      project-directory:
+        required: false
+        type: string
+        default: "."
 jobs:
   tests:
     name: python ${{ matrix.python-version }} tests, ${{ matrix.uv-resolution }} dependencies
@@ -24,12 +28,15 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           uv-params: "--all-extras --dev --resolution ${{ matrix.uv-resolution }}"
+          project-directory: ${{ inputs.project-directory }}
 
   coverage:
     needs: tests
     runs-on: ubuntu-latest
     steps:
-      - uses: cjw296/python-action/check-coverage@v1
+      - uses: cjw296/python-action/check-coverage@v2
+        with:
+          project-directory: ${{ inputs.project-directory }}
 
   typing:
     name: python ${{ matrix.python-version }} type checking
@@ -41,11 +48,14 @@ jobs:
       - uses: cjw296/python-action/check-typing@v2
         with:
           python-version: ${{ matrix.python-version }}
+          project-directory: ${{ inputs.project-directory }}
 
   formatting:
     runs-on: ubuntu-latest
     steps:
-      - uses: cjw296/python-action/check-formatting@v1
+      - uses: cjw296/python-action/check-formatting@v2
+        with:
+          project-directory: ${{ inputs.project-directory }}
 
   build-and-inspect-package:
     needs:
@@ -57,6 +67,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hynek/build-and-inspect-python-package@v2
+        with:
+          path: ${{ inputs.project-directory }}
 
   check-package:
     needs:
