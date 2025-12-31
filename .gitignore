@@ -1,0 +1,5 @@
+.claude/
+.coverage*
+.venv
+.*_cache
+uv.lock

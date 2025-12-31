@@ -1,0 +1,15 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  repository_dispatch:
+    types: [python-action-release]
+
+jobs:
+  test-uv-ci:
+    uses: ./.github/workflows/uv-ci.yml
+    with:
+      package: test_package
+      python-versions: '["3.9", "3.12"]'
