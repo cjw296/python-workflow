@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0 (31 Dec 2025)
+
+- Add CI triggering from pull requests, pushes to `main` and from `cjw296/python-action`.
+- Add `project-directory` parameter support.
+- Move to `cjw296/python-action@v3`.
+
 ## 2.1.0 (21 Dec 2025)
 
 - Use the factored out `run-test` and `check-typing` actions.
